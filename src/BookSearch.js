@@ -7,6 +7,7 @@ class BookSearch extends React.Component{
         super();
 
         this.state = {
+            dataLoading: false,
             author: '',
             title: '',
             allData: null,
@@ -23,6 +24,9 @@ class BookSearch extends React.Component{
 
     handleSubmit = event => {
         event.preventDefault();
+
+        this.setState({dataLoading: true});
+
         const { author, title } = this.state;
 
         if(author === '' && title === ''){
@@ -30,18 +34,18 @@ class BookSearch extends React.Component{
             return;
         }
 
-        // console.log(response.data.items[0])
-        // this.setState({
-        //     bookTitle: book.volumeInfo.title
-        // }, console.log(this.state.bookResults))
-        
         axios.get(`https://www.googleapis.com/books/v1/volumes?q=${title}+inauthor:${author}`)
-        .then(response => this.setState({allData: response.data.items}))
+        .then(response => this.setState({allData: response.data.items, dataLoading: false}))
         .catch(error => console.log('Unable to perform query:', error));
     }
 
 
     render(){
+
+        if(this.state.dataLoading){
+            return <p>Data loading...</p>
+        }
+
         return(
             <div className="div">
             <form onSubmit={this.handleSubmit}>
