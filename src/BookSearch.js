@@ -8,7 +8,12 @@ class BookSearch extends React.Component{
 
         this.state = {
             author: '',
-            title: ''
+            title: '',
+            allData: null,
+            bookResults: [{
+                bookAuthor: '',
+                bookTitle: ''
+            }]
         }
     }
 
@@ -24,9 +29,14 @@ class BookSearch extends React.Component{
             alert('please enter an Author and/or Title');
             return;
         }
+
+        // console.log(response.data.items[0])
+        // this.setState({
+        //     bookTitle: book.volumeInfo.title
+        // }, console.log(this.state.bookResults))
         
         axios.get(`https://www.googleapis.com/books/v1/volumes?q=${title}+inauthor:${author}`)
-        .then(response => console.log(response.data))
+        .then(response => this.setState({allData: response.data.items}))
         .catch(error => console.log('Unable to perform query:', error));
     }
 
