@@ -8,18 +8,16 @@ const Book = ({ book }) => {
     const moreInfo = book.volumeInfo.previewLink;
 
     return(
-        <div className="books">
-            <div className="book">
-                <div className="book__info">
-                    <p className="author">{author}</p>
-                    <p className="title">{title}</p>
-                </div>
-                <div className="book__description">
-                    <p className="description">{description}</p>
-                </div>
-                <a href={moreInfo} target="_blank">View More</a>
-         </div>
-    </div>
+        <div className="book">
+            <div className="book__info">
+                <p className="author">{author}</p>
+                <p className="title">{title}</p>
+            </div>
+            <div className="book__description">
+                <p className="description">{description}</p>
+            </div>
+            <a href={moreInfo} target="_blank">View More</a>
+        </div>
     )
 }
 

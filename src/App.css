@@ -7,23 +7,25 @@
 
 
 .books{
-  border: 1px solid green;
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
 }
 
-.books > .book{
-  border: 1px solid lightgray;
+.book{
+  border: 1px solid;
   padding: 10px;
-  max-width: 300px;
+  max-height: 300px;
 }
 
 .book__description{
-  border: 1px solid;
   min-height: 100px;
-  max-height: 300px;
+  max-height: 200px;
   overflow: auto;
 }
 
 .book__info{
+  border-bottom: 1px dotted darkgray;
   display: flex;
+  justify-content: space-between;
+  padding: 10px;
 }
