@@ -7,7 +7,6 @@ const Book = ({ book }) => {
     const description = book.volumeInfo.description;
     const moreInfo = book.volumeInfo.previewLink;
     // const image = ((book.volumeInfo.imageLinks) ? book.volumeInfo.imageLinks.thumbnail : undefined)
-    const image = book.volumeInfo.previewLink.thumbnail;
 
     return(
         <div className="book">
@@ -17,12 +16,11 @@ const Book = ({ book }) => {
             </div>
             <div className="book__description">
                 <p className="description">{description}</p>
+                <img src={
+                book.volumeInfo.imageLinks === undefined
+                ? ""
+                : `${book.volumeInfo.imageLinks.thumbnail}`} />
             </div>
-            <img src={
-         book.volumeInfo.imageLinks === undefined
-        ? ""
-        : `${book.volumeInfo.imageLinks.thumbnail}`
-  } />
         </div>
     )
 }

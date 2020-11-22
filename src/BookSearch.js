@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import './Book.css';
 
 import Book from './Book';
 
@@ -32,8 +31,8 @@ function BookSearch(){
         }
 
         return(
-            <div className="div">
-            <form onSubmit={handleSubmit}>
+            <div>
+            <form className="form__container" onSubmit={handleSubmit}>
                 <input type="text" value={book} onChange={handleChange} name="book" placeholder='Book name'/>
                 <button type="submit">Query Book</button>
             </form>

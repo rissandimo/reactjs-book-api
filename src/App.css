@@ -18,9 +18,16 @@
 }
 
 .book__description{
-  min-height: 100px;
-  max-height: 200px;
+  align-items: center;
+  display: flex;
+  padding: 10px;
+  justify-content: space-between;
+}
+
+.book__description > .description{
   overflow: auto;
+  max-height: 150px;
+  width: 350px;
 }
 
 .book__info{
@@ -28,4 +35,13 @@
   display: flex;
   justify-content: space-between;
   padding: 10px;
+}
+
+.form__container{
+  margin: 10px auto;
+  width: 300px;
+}
+
+.form__container > input{
+  outline: 0;
 }
