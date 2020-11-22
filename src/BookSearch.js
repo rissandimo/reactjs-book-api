@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
+import Book from './Book';
+
 function BookSearch(){
 
     const [book, setBook] = useState('');
@@ -38,7 +40,7 @@ function BookSearch(){
             </form>
             {
                 books.map(book => (
-                   <p>{book.volumeInfo.title}</p>
+                    <Book book={book} />
                 ))
             }
             </div>   
