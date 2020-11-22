@@ -1,0 +1,21 @@
+.books{
+    border: 1px solid green;
+    display: flex;
+}
+
+.books > .book{
+    border: 1px solid lightgray;
+    padding: 10px;
+    max-width: 400px;
+}
+
+.book__description{
+    border: 1px solid;
+    min-height: 100px;
+    max-height: 300px;
+    overflow: auto;
+}
+
+.book__info{
+    display: flex;
+}
