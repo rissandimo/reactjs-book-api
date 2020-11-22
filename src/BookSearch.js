@@ -1,62 +1,53 @@
-import React from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 
-class BookSearch extends React.Component{
+function BookSearch(){
 
-    constructor(){
-        super();
+    const [book, setBook] = useState('');
+    const [books, setBooks] = useState([]);
+    const [apiKey, setApiKey] = useState('AIzaSyAO0sNEMOqy-cw1hTcxCqlKBGB9lq0KMMk');
 
-        this.state = {
-            dataLoading: false,
-            author: '',
-            title: '',
-            allData: null,
-            bookResults: [{
-                bookAuthor: '',
-                bookTitle: ''
-            }]
+    const handleChange = event => {
+        const book = event.target.value;
+
+        setBook(book);
         }
-    }
 
-    handleChange = event => {
-        this.setState({[event.target.name] : event.target.value});
-    }
-
-    handleSubmit = event => {
+    const handleSubmit = event => {
         event.preventDefault();
 
-        this.setState({dataLoading: true});
+        console.log(book);
 
-        const { author, title } = this.state;
 
-        if(author === '' && title === ''){
-            alert('please enter an Author and/or Title');
-            return;
-        }
-
-        axios.get(`https://www.googleapis.com/books/v1/volumes?q=${title}+inauthor:${author}`)
-        .then(response => this.setState({allData: response.data.items, dataLoading: false}))
+        axios.get(`https://www.googleapis.com/books/v1/volumes?q=${book}&maxResults=40`)
+        .then(response => {
+            console.log(response.data.items);
+            setBooks(response.data.items);
+        })
         .catch(error => console.log('Unable to perform query:', error));
-    }
 
-
-    render(){
-
-        if(this.state.dataLoading){
-            return <p>Data loading...</p>
         }
+
+
 
         return(
             <div className="div">
-            <form onSubmit={this.handleSubmit}>
-                <input type="text" value={this.state.author} onChange={this.handleChange} name="author" placeholder='Author'/>
-                <input type="text" value={this.state.title} onChange={this.handleChange} name="title" placeholder='Title'/>
+            <form onSubmit={handleSubmit}>
+                <input type="text" value={book} onChange={handleChange} name="book" placeholder='Book name'/>
                 <button type="submit">Query Book</button>
             </form>
+            {
+                books.map(book => (
+                   <p>{book.volumeInfo.title}</p>
+                ))
+            }
             </div>   
         )
+
     }
 
-}
+
+
+
 
 export default BookSearch;
