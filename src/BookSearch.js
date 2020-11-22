@@ -5,23 +5,36 @@ import Book from './Book';
 
 function BookSearch(){
 
+    const [author, setAuthor] = useState('');
     const [book, setBook] = useState('');
     const [books, setBooks] = useState([]);
     const [apiKey, setApiKey] = useState('AIzaSyAO0sNEMOqy-cw1hTcxCqlKBGB9lq0KMMk');
 
-    const handleChange = event => {
-        const book = event.target.value;
+    const [state, setState] = React.useState({
+        book: "",
+        author: "" 
+    })
 
-        setBook(book);
+    const handleChange = event => {
+        const value = event.target.value;
+
+
+        setState({ 
+            ...state,
+            [event.target.name] : value
+         });
+
         }
 
     const handleSubmit = event => {
         event.preventDefault();
 
-        console.log(book);
+        if(state.author === '' && state.book === ''){
+            alert('Please enter a book and/or author');
+            return;
+        }
 
-
-        axios.get(`https://www.googleapis.com/books/v1/volumes?q=${book}&maxResults=40`)
+        axios.get(`https://www.googleapis.com/books/v1/volumes?q=${state.book}+inauthor:${state.author}&maxResults=40`)
         .then(response => {
             console.log(response.data.items);
             setBooks(response.data.items);
@@ -33,7 +46,8 @@ function BookSearch(){
         return(
             <div>
             <form className="form__container" onSubmit={handleSubmit}>
-                <input type="text" value={book} onChange={handleChange} name="book" placeholder='Book name'/>
+                <input type="text" value={state.book} onChange={handleChange} name="book" placeholder='Book Name'/>
+                <input type="text" name="author" value={state.author} onChange={handleChange} placeholder="Author Name" />
                 <button type="submit">Query Book</button>
             </form>
 
