@@ -30,8 +30,6 @@ function BookSearch(){
 
         }
 
-
-
         return(
             <div className="div">
             <form onSubmit={handleSubmit}>
