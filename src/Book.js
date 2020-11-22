@@ -6,7 +6,6 @@ const Book = ({ book }) => {
     const title = book.volumeInfo.title;
     const description = book.volumeInfo.description;
     const moreInfo = book.volumeInfo.previewLink;
-    // const image = ((book.volumeInfo.imageLinks) ? book.volumeInfo.imageLinks.thumbnail : undefined)
 
     return(
         <div className="book">
@@ -21,6 +20,7 @@ const Book = ({ book }) => {
                 ? ""
                 : `${book.volumeInfo.imageLinks.thumbnail}`} />
             </div>
+            <a href={moreInfo} target="_blank">View More</a>
         </div>
     )
 }
