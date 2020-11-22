@@ -5,6 +5,7 @@ const Book = ({ book }) => {
     const author = book.volumeInfo.authors[0];
     const title = book.volumeInfo.title;
     const description = book.volumeInfo.description;
+    const moreInfo = book.volumeInfo.previewLink;
 
     return(
         <div className="books">
@@ -16,6 +17,7 @@ const Book = ({ book }) => {
                 <div className="book__description">
                     <p className="description">{description}</p>
                 </div>
+                <a href={moreInfo} target="_blank">View More</a>
          </div>
     </div>
     )

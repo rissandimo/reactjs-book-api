@@ -37,11 +37,14 @@ function BookSearch(){
                 <input type="text" value={book} onChange={handleChange} name="book" placeholder='Book name'/>
                 <button type="submit">Query Book</button>
             </form>
-            {
-                books.map(book => (
-                    <Book book={book} />
-                ))
-            }
+
+            <div className="books">
+                {
+                    books.map(book => {
+                        return <Book key={book.id} book={book} />
+                    })
+                }
+            </div>
             </div>   
         )
 

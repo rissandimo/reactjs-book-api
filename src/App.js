@@ -4,8 +4,10 @@ import BookSearch from './BookSearch';
 
 function App() {
   return (
-    <div className="App">
-        <BookSearch />
+    <div className="app">
+        <div className="book__search">
+          <BookSearch />
+        </div>
     </div>
   );
 }
