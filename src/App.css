@@ -4,7 +4,9 @@
   padding: 0;
 }
 
-
+a{
+  text-decoration: none;
+}
 
 .books{
   display: grid;
@@ -17,7 +19,7 @@
   max-height: 300px;
 }
 
-.book > a{
+.book > .book__link{
   text-align: center;
   margin: 5px auto;
 }
@@ -27,6 +29,10 @@
   display: flex;
   padding: 10px;
   justify-content: space-between;
+}
+
+.book__description > img{
+  height: 150px;
 }
 
 .book__description > .description{

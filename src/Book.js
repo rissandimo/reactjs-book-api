@@ -20,7 +20,9 @@ const Book = ({ book }) => {
                 ? ""
                 : `${book.volumeInfo.imageLinks.thumbnail}`} />
             </div>
-            <a href={moreInfo} target="_blank">View More</a>
+            <div className="book__link">
+                <a href={moreInfo} target="_blank">View in Google Books</a>
+            </div>
         </div>
     )
 }
