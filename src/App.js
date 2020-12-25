@@ -1,8 +1,6 @@
 import './App.css';
 
-import BookSearch from './BookSearch';
-
-import bgImg from './header-pic.jpg';
+import BookSearch from './components/BookSearch';
 
 function App() {
   return (
