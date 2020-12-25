@@ -10,8 +10,7 @@ function BookSearch(){
     const [books, setBooks] = useState([]);
 
     const [state, setState] = React.useState({
-        book: "",
-        author: "" 
+        book: ""
     })
 
     const handleChange = event => {
@@ -27,12 +26,12 @@ function BookSearch(){
     const handleSubmit = event => {
         event.preventDefault();
 
-        if(state.author === '' && state.book === ''){
-            alert('Please enter a book and/or author');
+        if(state.book === ''){
+            alert('Please enter a book name');
             return;
         }
 
-        axios.get(`https://www.googleapis.com/books/v1/volumes?q=${state.book}+inauthor:${state.author}&maxResults=40`)
+        axios.get(`https://www.googleapis.com/books/v1/volumes?q=${state.book}&maxResults=40`)
         .then(response => {
             console.log(response.data.items);
             setBooks(response.data.items);
@@ -61,9 +60,5 @@ function BookSearch(){
         )
 
     }
-
-
-
-
 
 export default BookSearch;
