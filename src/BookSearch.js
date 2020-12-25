@@ -1,14 +1,12 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-import './booksSearch.css';
+import './bookSearch.css';
 
 import Book from './Book';
 
 function BookSearch(){
 
-    const [author, setAuthor] = useState('');
-    const [book, setBook] = useState('');
     const [books, setBooks] = useState([]);
 
     const [state, setState] = React.useState({
@@ -48,7 +46,6 @@ function BookSearch(){
             <form className="form__container" onSubmit={handleSubmit}>
                 <div className="inputs">
                     <input type="text" value={state.book} onChange={handleChange} name="book" placeholder='Book Name'/>
-                    <input type="text" name="author" value={state.author} onChange={handleChange} placeholder="Author Name" />
                 </div>
                 <button type="submit">Submit Query</button>
             </form>
