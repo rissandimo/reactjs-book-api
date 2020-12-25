@@ -58,3 +58,28 @@ a{
 .form__container > input{
   outline: 0;
 }
+
+header{
+  background-image: url('./header-pic.jpg');
+  background-size: cover;
+  height: 30vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+header * {
+  z-index: 1;
+}
+
+header::before{
+    background: rgba(0,0,0,0.6);
+    height: 100%;
+    content: '';
+    left: 0;
+    top: 0;
+    position: absolute;
+    width: 100%;
+}

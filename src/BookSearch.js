@@ -8,7 +8,6 @@ function BookSearch(){
     const [author, setAuthor] = useState('');
     const [book, setBook] = useState('');
     const [books, setBooks] = useState([]);
-    const [apiKey, setApiKey] = useState('AIzaSyAO0sNEMOqy-cw1hTcxCqlKBGB9lq0KMMk');
 
     const [state, setState] = React.useState({
         book: "",
@@ -17,7 +16,6 @@ function BookSearch(){
 
     const handleChange = event => {
         const value = event.target.value;
-
 
         setState({ 
             ...state,
