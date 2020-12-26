@@ -1,6 +1,7 @@
 import './App.css';
 
 import BookSearch from './components/BookSearch';
+import Books from './components/books/Books';
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
           <BookSearch />
         </div>
       </header>
+      <Books />
     </div>
   );
 }
