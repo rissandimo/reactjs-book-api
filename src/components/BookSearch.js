@@ -1,13 +1,17 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
+import { connect } from 'react-redux';
+
+import { setBooks } from '../redux/book/book-actions';
+
 import './bookSearch.css';
 
 import Book from './Book';
 
-function BookSearch(){
+const BookSearch = ({ setBooks }) => {
 
-    const [books, setBooks] = useState([]);
+    // const [books, setBooks] = useState([]);
 
     const [state, setState] = React.useState({
         book: ""
@@ -33,7 +37,7 @@ function BookSearch(){
 
         axios.get(`https://www.googleapis.com/books/v1/volumes?q=${state.book}&maxResults=40`)
         .then(response => {
-            console.log(response.data.items);
+            // console.log(response.data.items);
             setBooks(response.data.items);
         })
         .catch(error => console.log('Unable to perform query:', error));
@@ -50,15 +54,19 @@ function BookSearch(){
             </form>
 
             <div className="books">
-                {
+                {/* {
                     books.map(book => {
                         return <Book key={book.id} book={book} />
                     })
-                }
+                } */}
             </div>
             </div>   
         )
 
     }
 
-export default BookSearch;
+const mapDispatchToProps = dispatch => ({
+    setBooks: books => dispatch(setBooks(books))
+})
+
+export default connect(null, mapDispatchToProps)(BookSearch);
