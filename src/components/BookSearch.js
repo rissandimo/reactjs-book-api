@@ -52,14 +52,6 @@ const BookSearch = ({ setBooks }) => {
                 </div>
                 <button type="submit">Submit Query</button>
             </form>
-
-            <div className="books">
-                {/* {
-                    books.map(book => {
-                        return <Book key={book.id} book={book} />
-                    })
-                } */}
-            </div>
             </div>   
         )
 
