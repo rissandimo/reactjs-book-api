@@ -7,54 +7,41 @@ import { setBooks } from '../redux/book/book-actions';
 
 import './bookSearch.css';
 
-import Book from './Book';
-
 const BookSearch = ({ setBooks }) => {
 
-    // const [books, setBooks] = useState([]);
-
-    const [state, setState] = React.useState({
-        book: ""
-    })
+    const [book, setBook] = useState('');
 
     const handleChange = event => {
         const value = event.target.value;
-
-        setState({ 
-            ...state,
-            [event.target.name] : value
-         });
-
-        }
+        setBook(value);
+    }
 
     const handleSubmit = event => {
         event.preventDefault();
 
-        if(state.book === ''){
+        if(book === ''){
             alert('Please enter a book name');
             return;
         }
 
-        axios.get(`https://www.googleapis.com/books/v1/volumes?q=${state.book}&maxResults=40`)
+        axios.get(`https://www.googleapis.com/books/v1/volumes?q=${book}&maxResults=40`)
         .then(response => {
-            // console.log(response.data.items);
             setBooks(response.data.items);
+            setBook('');
         })
         .catch(error => console.log('Unable to perform query:', error));
-
         }
 
         return(
             <div>
             <form className="form__container" onSubmit={handleSubmit}>
                 <div className="inputs">
-                    <input type="text" value={state.book} onChange={handleChange} name="book" placeholder='Book Name'/>
+                    <input type="text" value={book} onChange={handleChange} name="book" placeholder='Book Name'/>
                 </div>
                 <button type="submit">Submit Query</button>
             </form>
             </div>   
         )
-
     }
 
 const mapDispatchToProps = dispatch => ({
