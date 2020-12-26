@@ -3,7 +3,7 @@ import axios from 'axios';
 
 import { connect } from 'react-redux';
 
-import { setBooks } from '../redux/book/book-actions';
+import { setBooks } from '../../redux/book/book-actions';
 
 import './bookSearch.css';
 
@@ -33,7 +33,7 @@ const BookSearch = ({ setBooks }) => {
         }
 
         return(
-            <div>
+            <div className="book__search">
             <form className="form__container" onSubmit={handleSubmit}>
                 <div className="inputs">
                     <input type="text" value={book} onChange={handleChange} name="book" placeholder='Book Name'/>

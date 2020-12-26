@@ -1,9 +1,11 @@
 .form__container{
     display: flex;
+    height: 100px;
     flex-direction: column;
     justify-content: space-around;
-    height: 100px;
-}
+    margin: 10px auto;
+    width: 300px;
+  }
 
 .form__container > button{
     border-radius: 10px;
@@ -20,3 +22,8 @@
     padding: 0.5rem;
     width: 100%;
 }
+
+  
+  .form__container > input{
+    outline: 0;
+  }

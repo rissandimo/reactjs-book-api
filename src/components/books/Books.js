@@ -1,8 +1,9 @@
 import React from 'react';
+import './books.css';
 
 import { connect } from 'react-redux';
 
-import Book from '../Book';
+import Book from '../book/Book';
 
 const Books = ({ books }) => {
     return(
