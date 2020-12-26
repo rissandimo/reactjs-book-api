@@ -3,5 +3,16 @@
     grid-gap: 1rem;
     grid-template-columns: repeat(3, 1fr);
     padding: 1rem;
+}
+
+@media(max-width: 1570px){
+    .books{
+        grid-template-columns: repeat(2, 1fr);
+    }
   }
   
+@media(max-width: 1040px){
+    .books{
+        grid-template-columns: 1fr;
+    }
+  }

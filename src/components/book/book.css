@@ -32,3 +32,10 @@
     justify-content: space-between;
     padding: 10px;
   }
+
+  @media(max-width: 545px){
+    .book{
+        width: 410px;
+    }
+  }
+  
