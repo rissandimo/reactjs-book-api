@@ -24,7 +24,7 @@ const BookSearch = ({ setBooks }) => {
             return;
         }
 
-        axios.get(`https://www.googleapis.com/books/v1/volumes?q=${book}&maxResults=40`)
+        axios.get(`https://www.googleapis.com/books/v1/volumes?q=${book}&maxResults=10`)
         .then(response => {
             setBooks(response.data.items);
             setBook('');

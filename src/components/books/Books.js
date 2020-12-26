@@ -5,11 +5,12 @@ import { connect } from 'react-redux';
 import Book from '../Book';
 
 const Books = ({ books }) => {
-    console.log(books);
     return(
     <div className="books">
     {
-        books ? books.map(book => {
+        books ? books
+        .filter(book => book.volumeInfo.authors.length > 0)
+        .map(book => {
             return <Book key={book.id} book={book} />
         }) : ''
     }
